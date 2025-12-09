@@ -1,0 +1,19 @@
+# --- Web Scraping e HTTP (Questões 1 e 3) ---
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+
+# --- Framework de Scraping (Questão 2) ---
+# Exigido para o crawler da Servimed
+scrapy>=2.6.0
+
+# --- Criptografia (Questão 1) ---
+# Exigido no PDF para criptografar a senha do 'Compra Agora'
+pynacl>=1.5.0
+
+# --- Automação de Navegador (Questão 6 e Visualizações) ---
+# Necessário para controlar o Chrome (Headless ou com Tela)
+selenium>=4.0.0
+
+# --- Gerenciamento de Drivers ---
+# Instala automaticamente o ChromeDriver compatível com sua versão do Chrome
+webdriver-manager>=3.8.0
