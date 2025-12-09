@@ -92,13 +92,14 @@ Explicação teórica sobre a relação entre VPC, Subnets e Security Groups.
 
 ```text
 .
-├── Dockerfile                # Definição do ambiente (Python + Chrome/Drivers)
 ├── README.md                 # Documentação do projeto
-├── requirements.txt          # Dependências do Python
-├── q1_compra_agora.py        # Solução Q1 (Requests)
-├── q2_servimed_scrapy.py     # Wrapper para execução do Scrapy (Q2)
-├── q3_coopertotal.py         # Solução Q3 (Automação de Pedido)
-├── Questao4.txt              # Resposta Q4 (Credenciais FTP)
-├── q5_arvore.py              # Solução Q5 (Lógica da Árvore)
-├── test_q5_arvore.py         # Testes Unitários da Q5
-└── q6_selenium.py            # Solução Q6 (Selenium Bot)
+└── projeto/                  # Soluções técnicas containerizadas
+    ├── Dockerfile            # Configuração da imagem Docker
+    ├── requirements.txt      # Dependências do Python
+    ├── Questao4.txt          # Resposta da Q4 (FTP)
+    ├── q1_compra_agora.py    # Q1: Web Scraping (Requests/Selenium)
+    ├── q2_servimed_scrapy.py # Q2: Crawler Scrapy
+    ├── q3_coopertotal.py     # Q3: Automação de Pedido
+    ├── q5_arvore.py          # Q5: Implementação da Árvore
+    ├── test_q5_arvore.py     # Q5: Testes Unitários
+    └── q6_selenium.py        # Q6: Bot Selenium
