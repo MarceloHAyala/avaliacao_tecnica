@@ -116,7 +116,6 @@ class CompraAgoraScraper:
             return False
 
     def scrape_categories(self):
-        # [cite_start]Lista exata do PDF [cite: 27-34]
         categories = [
             "Alimentos", "Bazar", "Bebidas", "Bomboniere", 
             "Cuidados Pessoais", "Roupa e Casa"
@@ -140,10 +139,6 @@ class CompraAgoraScraper:
 
                 soup = BeautifulSoup(response.content, 'html.parser')
 
-                # SELETORES REAIS (Genéricos para E-commerce)
-                # O script busca por containers de produtos. Se o site mudou,
-                # estes seletores precisam ser atualizados via F12.
-                # Tentativa 1: Busca genérica por classes comuns de card de produto
                 products_found = soup.select('.product-item, .card, .product-card, .vtex-product-summary-2-x-container')
                 
                 if not products_found:
