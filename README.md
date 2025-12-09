@@ -90,7 +90,7 @@ Explicação teórica sobre a relação entre VPC, Subnets e Security Groups.
     ├── Dockerfile            # Mantido com Chrome para a Q6
     ├── requirements.txt      # Atualizado
     ├── Questao4.txt          # Resposta Q4
-    ├── Questao3.txt          # Aviso de anulação da Q3 (NOVO)
+    ├── Questao3.txt          # Aviso de anulação da Q3
     ├── q1_compra_agora.py    # Seu código novo (Requests + Pynacl)
     ├── q2_servimed_scrapy.py # Crawler Scrapy
     ├── q5_arvore.py          # Árvore
