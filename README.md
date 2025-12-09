@@ -39,7 +39,7 @@ Abaixo estão os comandos para executar cada questão isoladamente. Os arquivos 
 
 ### 1️⃣ Questão 1: Scraping "Compra Agora"
 Script que realiza login seguro e extrai informações de produtos.
-* [cite_start]**Técnica:** Utiliza a biblioteca `Requests` para navegação HTTP rápida e `PyNaCl` para criptografia de senha, conforme exigido no teste[cite: 22, 24].
+* **Técnica:** Utiliza a biblioteca `Requests` para navegação HTTP rápida e `PyNaCl` para criptografia de senha, conforme exigido no teste[cite: 22, 24].
 * **Comando:**
     ```bash
     docker run -v $(pwd):/app teste-python python q1_compra_agora.py
