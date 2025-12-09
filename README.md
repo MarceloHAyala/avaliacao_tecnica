@@ -1,23 +1,33 @@
 # 🐍 Desafio Técnico - Desenvolvedor Python
 
-Bem-vindo à solução do desafio técnico para a vaga de Desenvolvedor Python. Este projeto reúne scripts de automação, *web scraping*, estruturas de dados e conceitos de infraestrutura em nuvem, totalmente containerizados para garantir portabilidade e reprodutibilidade, conforme solicitado nas instruções do teste.
+Bem-vindo à solução do desafio técnico para a vaga de Desenvolvedor Python. Este projeto reúne scripts de automação, *web scraping*, estruturas de dados e conceitos de infraestrutura em nuvem, totalmente containerizados para garantir portabilidade e reprodutibilidade.
 
 ## 📋 Visão Geral do Projeto
 
 O objetivo deste projeto é demonstrar competências em:
 * **Web Scraping:** Extração de dados complexos utilizando `Requests`, `Scrapy` e `Selenium`.
-* **Automação:** Simulação de fluxos de pedidos e lógica de carrinho de compras.
+* **Automação:** Simulação de fluxos e lógica de negócios.
 * **Engenharia de Software:** Uso de Docker, *Logging* e testes unitários.
 * **Estruturas de Dados:** Implementação e manipulação de árvores.
 * **Cloud (AWS):** Conceitos fundamentais de rede e segurança.
 
 ## 🛠️ Stack Tecnológico
 
-* **Linguagem:** Python 3.6+
+* **Linguagem:** Python 3.9+
 * **Containerização:** Docker
 * **Bibliotecas Principais:** `scrapy`, `requests`, `selenium`, `pynacl`.
 * **Observabilidade:** Módulo nativo `logging`.
 
+---
+
+## 🚀 Instalação e Configuração
+
+Conforme os requisitos, não é necessária a instalação local do interpretador Python. Todo o ambiente é gerenciado via Docker.
+
+**⚠️ Importante:** Todos os códigos fonte estão na pasta `projeto`. Antes de executar qualquer comando abaixo, acesse o diretório:
+
+```bash
+cd projeto
 ---
 
 ## 💻 Guia de Execução (Passo a Passo)
