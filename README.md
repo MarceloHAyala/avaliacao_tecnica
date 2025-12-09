@@ -28,7 +28,7 @@ Conforme os requisitos, não é necessária a instalação local do interpretado
 
 ```bash
 cd projeto
----
+```
 
 ## 💻 Guia de Execução (Passo a Passo)
 
