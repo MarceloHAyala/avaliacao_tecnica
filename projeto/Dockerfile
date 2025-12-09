@@ -1,32 +1,27 @@
-# Usa uma imagem base oficial do Python (atende ao requisito Python 3.6+ )
+# Usa uma imagem base oficial do Python
 FROM python:3.9-slim
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
 
 # --- Configuração para o Selenium (Chrome) ---
-# Instala dependências do sistema para o Chrome e o próprio Chrome
+# Atualiza o sistema e instala dependências básicas
+# Em seguida, baixa o .deb oficial do Chrome e instala diretamente
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     unzip \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable \
+    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm google-chrome-stable_current_amd64.deb \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Instalação das dependências Python ---
-# Copia o arquivo de requisitos para dentro do container
 COPY requirements.txt .
-
-# Instala as bibliotecas Python sem cache para deixar a imagem mais leve
 RUN pip install --no-cache-dir -r requirements.txt
 
 # --- Finalização ---
-# Copia todos os scripts do seu projeto para a pasta /app do container
 COPY . .
 
-# Define o comando padrão para executar scripts Python
-# Isso permite que você passe o nome do script como argumento ao rodar o container
+# Define o comando padrão
 ENTRYPOINT ["python"]
