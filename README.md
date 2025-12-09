@@ -38,13 +38,13 @@ Conforme os requisitos, não é necessária a instalação local do interpretado
 Abaixo estão os comandos para executar cada questão isoladamente. Os arquivos gerados (JSONs) serão salvos automaticamente na sua pasta local (graças ao volume `-v`).
 
 ### 1️⃣ Questão 1: Scraping "Compra Agora"
-Script que realiza login, navega entre categorias e extrai informações de produtos (Descrição, Fabricante, Imagem).
-* **Técnica:** Utiliza `requests` com gerenciamento de sessão e login criptografado (pynacl).
+Script que realiza login seguro e extrai informações de produtos.
+* [cite_start]**Técnica:** Utiliza a biblioteca `Requests` para navegação HTTP rápida e `PyNaCl` para criptografia de senha, conforme exigido no teste[cite: 22, 24].
 * **Comando:**
     ```bash
     docker run -v $(pwd):/app teste-python python q1_compra_agora.py
     ```
-* **Resultado:** Gera o arquivo `produtos.json` contendo os dados obtidos.
+* **Resultado:** Gera o arquivo `produtos.json` (Nota: devido às credenciais antigas do teste, o JSON pode ser gerado vazio, comprovando a tentativa de conexão real).
 
 ### 2️⃣ Questão 2: Consulta Servimed (Scrapy)
 Spider desenvolvido com Scrapy para consultar o status de faturamento de um pedido específico.
@@ -56,12 +56,8 @@ Spider desenvolvido com Scrapy para consultar o status de faturamento de um pedi
 * **Resultado:** Gera um JSON com os campos Motivo, Itens e Quantidade Faturada.
 
 ### 3️⃣ Questão 3: Automação CooperTotal
-Script que simula a criação de um pedido, aplicando lógica de valor mínimo para faturamento. Caso o valor não seja atingido, insere itens de preenchimento automaticamente.
-* **Comando:**
-    ```bash
-    docker run -v $(pwd):/app teste-python python q3_coopertotal.py
-    ```
-* **Resultado:** Exibe o `order_id` e status no console e salva o log da operação.
+* **Status:** Questão anulada conforme alinhamento com a recrutadora (Julia).
+* **Arquivo:** Consulte `Questao3.txt` para mais detalhes.
 
 ### 4️⃣ Questão 4: Engenharia Reversa (FTP)
 A solução para o desafio de conexão FTP e descoberta de credenciais encontra-se documentada no arquivo de texto solicitado.
@@ -92,14 +88,14 @@ Explicação teórica sobre a relação entre VPC, Subnets e Security Groups.
 
 ```text
 .
-├── README.md                 # Documentação do projeto
-└── projeto/                  # Soluções técnicas containerizadas
-    ├── Dockerfile            # Configuração da imagem Docker
-    ├── requirements.txt      # Dependências do Python
-    ├── Questao4.txt          # Resposta da Q4 (FTP)
-    ├── q1_compra_agora.py    # Q1: Web Scraping (Requests/Selenium)
-    ├── q2_servimed_scrapy.py # Q2: Crawler Scrapy
-    ├── q3_coopertotal.py     # Q3: Automação de Pedido
-    ├── q5_arvore.py          # Q5: Implementação da Árvore
-    ├── test_q5_arvore.py     # Q5: Testes Unitários
-    └── q6_selenium.py        # Q6: Bot Selenium
+├── README.md                 # Documentação atualizada
+└── projeto/                  # Pasta com os códigos
+    ├── Dockerfile            # Mantido com Chrome para a Q6
+    ├── requirements.txt      # Atualizado
+    ├── Questao4.txt          # Resposta Q4
+    ├── Questao3.txt          # Aviso de anulação da Q3 (NOVO)
+    ├── q1_compra_agora.py    # Seu código novo (Requests + Pynacl)
+    ├── q2_servimed_scrapy.py # Crawler Scrapy
+    ├── q5_arvore.py          # Árvore
+    ├── test_q5_arvore.py     # Testes
+    └── q6_selenium.py        # Bot Selenium (J.K. Rowling)
