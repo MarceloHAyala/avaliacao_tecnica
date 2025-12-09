@@ -20,9 +20,15 @@ class QuotesBot:
         
         # Configurações do Chrome para rodar no Docker (Headless)
         chrome_options = Options()
-        #chrome_options.add_argument("--headless") 
+    
+        # O modo headless é obrigatório em ambientes Docker sem interface gráfica
+        chrome_options.add_argument("--headless=new") 
+        # ---------------------
+        
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--window-size=1920,1080")
         
         # Instalação automática do driver correto
         service = Service(ChromeDriverManager().install())
@@ -59,11 +65,11 @@ class QuotesBot:
                         if not author_info:
                             logger.info("Autor encontrado. Acessando biografia...")
                             
-                            # Estratégia: Abrir em nova aba para não perder a posição na lista de citações
+                            # Estratégia: Pegar o link e abrir em nova aba
                             link_element = quote.find_element(By.LINK_TEXT, "(about)")
                             link_url = link_element.get_attribute("href")
                             
-                            # Abre nova janela e muda o foco para ela
+                            # Abre nova janela
                             self.driver.execute_script("window.open('');")
                             self.driver.switch_to.window(self.driver.window_handles[1])
                             self.driver.get(link_url)
@@ -73,7 +79,7 @@ class QuotesBot:
                                 "name": self.driver.find_element(By.CLASS_NAME, "author-title").text,
                                 "birth_date": self.driver.find_element(By.CLASS_NAME, "author-born-date").text,
                                 "birth_location": self.driver.find_element(By.CLASS_NAME, "author-born-location").text,
-                                "description": self.driver.find_element(By.CLASS_NAME, "author-description").text[:200] + "..." # Truncando para não poluir o log
+                                "description": self.driver.find_element(By.CLASS_NAME, "author-description").text[:200] + "..."
                             }
                             
                             # Fecha a aba da bio e volta para a principal
@@ -89,7 +95,7 @@ class QuotesBot:
                 link_next = next_btn.find_element(By.TAG_NAME, "a")
                 logger.info("Indo para a próxima página...")
                 link_next.click()
-                sleep(1) # Pequena pausa para garantir o carregamento
+                sleep(1) 
             except:
                 logger.info("Fim das páginas ou botão 'Next' não encontrado.")
                 break
@@ -106,17 +112,14 @@ class QuotesBot:
         }
 
 if __name__ == "__main__":
-    # Permite passar o nome via linha de comando ou usa o padrão solicitado
     target_author = sys.argv[1] if len(sys.argv) > 1 else "J.K. Rowling"
     
     bot = QuotesBot()
     data = bot.scrape_author(target_author)
     
     if data:
-        # Exibe no console
         print(json.dumps(data, indent=4, ensure_ascii=False))
         
-        # Salva o JSON final
         with open("quotes_author.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
             logger.info("Arquivo quotes_author.json salvo com sucesso.")
